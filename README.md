@@ -28,11 +28,12 @@ git push -u origin master
 git remote add origin git@github.com:YourUsername/your-app.git
 ```
 work with SSH, then you won't have to enter GitHub credentials every time you push code to GitHub [help connecting to github with ssh](https://help.github.com/articles/connecting-to-github-with-ssh/)
+
 7. View the list of repositories
 ```git
 git remote -v
 ```
-8. Ignore files with 
+8. Ignore files with [.gitignore](https://help.github.com/articles/ignoring-files/)
 ```git
 .gitignore
 ```
@@ -67,11 +68,14 @@ COMMAND | DESCRIPTION
 <code>git config –global user.name "[name]"</code> | Configure the author name to be used with your commits.
 <code>git config –global user.email "[email address]"</code> | Configure the email address to be used with your commits.
 
-## GIT STARTING A REPO
+## GIT STARTING A REPO/ CLONING
 COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git init  [repository name]</code> | Initialize a local Git repository
-<code>git clone ssh://git@github.com/[username]/[repository-name].git </code> | Create a local copy of a remote repository (from an existing URL)
+<code>git clone ssh://git@github.com/[username]/[repository-name].git </code> | Create a local copy of a remote repository (from an existing URL via SSH)
+<code>git clone https://github.com/[username]/[repository-name].git</code> | Create a local copy of a remote repository (from an existing URL via HTTPS)
+<code>git clone https://github.com/[username]/[repository-name].git ~/dir/folder</code> | Create a local copy of a remote repository to a folder (from an existing URL via HTTPS)
+<code>git clone -b branchname https://github.com/[username]/[repository-name].git</code> | Clone specific branch to localhost
 <code>git pull</code> | Update local repository to the newest commit
 <code>git status</code> | Check status
 
@@ -87,6 +91,8 @@ COMMAND | DESCRIPTION
 <code>git add Folder/\*.txt</code> | Adds content from all *.txt files under given directory and its subdirectories
 <code>git rm --cached my-file.ts</code> | deletes the file from your working directory and stages the deletion
 <code>git reset another-file.js</code> | unstages the file but it preserves the file contents.
+<code>git push origin :branchname</code> | Delete remote branch (push nothing)
+<code>git push origin --delete branchname</code> | Delete remote branch (push nothing)
 
 
 ## COMMITTING
@@ -104,6 +110,7 @@ COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git branch</code> | see our current branches
 <code>git branch -a</code> | list all branches (remote and local)
+<code>git branch -r</code> | list all remote branches 
 <code>git branch new_branch</code> | create a new branch
 <code>git branch -f new_branch</code> | create a new branch (if it already exists, then reset it)
 <code>git branch -d new_branch</code> | delete branch
@@ -185,15 +192,32 @@ COMMAND | DESCRIPTION
 COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git diff</code> | shows the file differences which are not yet staged
+<code>git diff --color-words index.html</code> | Compare modified files and highlight changes only
 <code>git diff –staged</code> | shows the differences between the files in the staging area and the latest version present
 <code>git diff [branch1] [branch2]</code> | shows the differences between the two branches mentioned
+<code>git diff 6eb715d</code> | compare commits
+<code>git diff 6eb715d index.html</code> | compare commits of a file
+<code>git diff 6eb715d 7eds15d index.html</code> | compare commits of a file
 
 ## LOGGING
 
 COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git log</code> | list the version history for the current branch
+<code>git log --oneline</code> | show oneline-summary of commits
+<code>git log --format=oneline</code> | show oneline-summary of commits with full SHA-1
+<code>git log --oneline -3</code> | show oneline-summary of the last three commits
+<code>git log --author="Sven"</code> | show only custom commits
+<code>git log --grep="Message"</code> | show only custom commits
+<code>git log --until=2013-01-01</code> | show only custom commits
+<code>git log --since=2013-01-01</code> | show only custom commits
+<code>git log -p</code> | show changes
+<code>git log 6eb715d.. index.html</code> | show every commit since special commit for custom file only
+<code>git log -p 6eb715d.. index.html</code> | Show changes of every commit since special commit for custom file only
+<code>git log --stat --summary</code> | Show stats and summary of commits
 <code>git log –follow[file]</code> | lists version history for a file, including the renaming of files also.
+<code>git log --graph</code> | Show history of commits as graph
+<code>git log --oneline --graph --all --decorate</code> | Show history of commits as graph-summary
 <code>git show [commit]</code> | shows the metadata and content changes of the specified commit.
 
 ## MISC
