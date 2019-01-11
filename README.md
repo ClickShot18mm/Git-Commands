@@ -63,7 +63,7 @@ git pull
 ## CONFIG
 COMMAND | DESCRIPTION
 ------------ | -------------
-git config –global user.name "[name]" | Configure the author name to be used with your commits.
+<code>git config –global user.name "[name]"</code> | Configure the author name to be used with your commits.
 git config –global user.email "[email address]" | Configure the email address to be used with your commits.
 
 ## GIT STARTING A REPO
