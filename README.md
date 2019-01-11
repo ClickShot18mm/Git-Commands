@@ -113,7 +113,9 @@ COMMAND | DESCRIPTION
 <code>git branch -r</code> | list all remote branches 
 <code>git branch new_branch</code> | create a new branch
 <code>git branch -f new_branch</code> | create a new branch (if it already exists, then reset it)
-<code>git branch -d new_branch</code> | delete branch
+<code>git branch -d new_branch</code> | delete a local branch 
+<code>git push origin --delete [branch name]</code> | delete a remote branch
+<code>git push origin :[branch name]</code> | delete a remote branch
 <code>git checkout new_branch</code> | switch branch
 <code>git checkout -b new_branch</code> | create a new branch and switch to it
 <code>git checkout -B new_branch</code> | create a new branch (if it already exists, then reset it) and switch to it
@@ -181,7 +183,6 @@ COMMAND | DESCRIPTION
 <code>git push origin [branch name]</code> | Push a branch to your remote repository
 <code>git push -u origin [branch name]</code> | Push changes to remote repository (and remember the branch)
 <code>git push</code> | Push changes to remote repository (remembered branch)
-<code>git push origin --delete [branch name]</code> | Delete a remote branch
 <code>git pull</code> | Update local repository to the newest commit
 <code>git pull origin [branch name]</code> | Pull changes from remote repository
 <code>git remote add origin ssh://git@github.com/[username]/[repository-name].git </code> | Add a remote repository
