@@ -93,6 +93,8 @@ COMMAND | DESCRIPTION
 <code>git reset another-file.js</code> | unstages the file but it preserves the file contents.
 <code>git push origin :branchname</code> | Delete remote branch (push nothing)
 <code>git push origin --delete branchname</code> | Delete remote branch (push nothing)
+<code>git clean -n git clean -f</code | Forcefully remove untracked files
+<code>git clean -n git clean -f -d</code | Forcefully remove untracked directory
 
 
 ## COMMITTING
@@ -113,6 +115,8 @@ COMMAND | DESCRIPTION
 <code>git branch -r</code> | list all remote branches 
 <code>git branch new_branch</code> | create a new branch
 <code>git branch -f new_branch</code> | create a new branch (if it already exists, then reset it)
+<code>git branch -m new_branch_name</code> | rename a branch
+<code>git branch -m [old-branch-name] [new-branch-name]</code> | rename a branch
 <code>git branch -d new_branch</code> | delete a local branch 
 <code>git push origin --delete [branch name]</code> | delete a remote branch
 <code>git push origin :[branch name]</code> | delete a remote branch
