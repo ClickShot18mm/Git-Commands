@@ -9,28 +9,28 @@ A list of my commonly used Git commands.
 3. Start a project and give it a name
 4. Grab the HTTPS link to this new repository	
 ```git
-https://github.com/YourUsername/some-small-app.git
+<code>https://github.com/YourUsername/some-small-app.git</code>
 ```
 5. Bind this remote repository to your local repository 
 via HTTPS 
 ```git
-git remote add origin https://github.com/YourUsername/some-small-app.git
+<code>git remote add origin https://github.com/YourUsername/some-small-app.git</code>
 ```
 push tells Git to push your files to a remote repository
 ```git
-git push -u origin master
+<code>git push -u origin master</code>
 ```	
 "-u", we can run only "git push" next time!".
 
 "git push" is that you have to enter your credentials each time you push code to GitHub.
 6. Bind this remote repository to your local repository via SSH
 ```git
-git remote add origin git@github.com:YourUsername/your-app.git
+<code>git remote add origin git@github.com:YourUsername/your-app.git</code>
 ```
 work with SSH, then you won't have to enter GitHub credentials every time you push code to GitHub [help connecting to github with ssh](https://help.github.com/articles/connecting-to-github-with-ssh/)
 7. View the list of repositories
 ```git
-git remote -v
+<code>git remote -v</code>
 ```
 8. Ignore files with 
 ```git
@@ -60,61 +60,62 @@ git clone ssh://git@github.com/[username]/[repository-name].git
 ```git
 git pull
 ```
+
 ## CONFIG
 COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git config –global user.name "[name]"</code> | Configure the author name to be used with your commits.
-git config –global user.email "[email address]" | Configure the email address to be used with your commits.
+<code>git config –global user.email "[email address]"</code> | Configure the email address to be used with your commits.
 
 ## GIT STARTING A REPO
 COMMAND | DESCRIPTION
 ------------ | -------------
-git init  [repository name] | Initialize a local Git repository
-git clone ssh://git@github.com/[username]/[repository-name].git | Create a local copy of a remote repository (from an existing URL)
-git pull | Update local repository to the newest commit
-git status | Check status
+<code>git init  [repository name]</code> | Initialize a local Git repository
+<code>git clone ssh://git@github.com/[username]/[repository-name].git </code> | Create a local copy of a remote repository (from an existing URL)
+<code>git pull</code> | Update local repository to the newest commit
+<code>git status</code> | Check status
 
 
 ## ADDING/ DELETING
 COMMAND | DESCRIPTION
 ------------ | -------------
-git add filename(s) | Add a file to the staging area
-git add . | Add several files to the staging area in one go (only add files located in the root directory)
-git add --all | Add several files to the staging area in one go (add files located in the root directory and other directories)
-git add -A | Add all new and changed files to the staging area (Same as Above)
-git add * | Adds one or more to the staging area.
-git add Folder/\*.txt | Adds content from all *.txt files under given directory and its subdirectories
-git rm --cached my-file.ts | deletes the file from your working directory and stages the deletion
-git reset another-file.js | unstages the file but it preserves the file contents.
+<code>git add filename(s)</code> | Add a file to the staging area
+<code>git add .</code> | Add several files to the staging area in one go (only add files located in the root directory)
+<code>git add --all</code> | Add several files to the staging area in one go (add files located in the root directory and other directories)
+<code>git add -A</code> | Add all new and changed files to the staging area (Same as Above)
+<code>git add *</code> | Adds one or more to the staging area.
+<code>git add Folder/\*.txt</code> | Adds content from all *.txt files under given directory and its subdirectories
+<code>git rm --cached my-file.ts</code> | deletes the file from your working directory and stages the deletion
+<code>git reset another-file.js</code> | unstages the file but it preserves the file contents.
 
 
 ## COMMITTING
 COMMAND | DESCRIPTION
 ------------ | -------------
-git commit -m "message" | commit changes
-git commit -a -m "Do something once more" | add modified files to the staging area and commit them at the same time
-git reset --soft HEAD^	|		undo the commit (resetting the HEAD)
-git commit --amend -m "Add the remaining file" | rectify commit with new message. Just add the remaining file to the staging area and then commit
+<code>git commit -m "message"</code> | commit changes
+<code>git commit -a -m "Do something once more"</code> | add modified files to the staging area and commit them at the same time
+<code>git reset --soft HEAD^</code>	|		undo the commit (resetting the HEAD)
+<code>git commit --amend -m "Add the remaining file"</code> | rectify commit with new message. Just add the remaining file to the staging area and then commit
 
 
 ## BRANCHING (Create branches/ Switch branches or Restore working tree files)
 
 COMMAND | DESCRIPTION
 ------------ | -------------
-git branch | see our current branches
-git branch -a | list all branches (remote and local)
-git branch new_branch | create a new branch
-git branch -f new_branch | create a new branch (if it already exists, then reset it)
-git branch -d new_branch | delete branch
-git checkout new_branch | switch branch
-git checkout -b new_branch | create a new branch and switch to it
-git checkout -B new_branch | create a new branch (if it already exists, then reset it) and switch to it
-git checkout -b [branch name] origin/[branch name] | clone a remote branch and switch to it
-git checkout -f new_branch | switching branches, proceed even if the index or the working tree differs from HEAD. This is used to throw away local changes.
-git checkout -  | switch to the branch last checked out
-git checkout -- [file-name.txt] | discard changes to a file
-git checkout e3b43d63 | get back to a previously committed state
-git reset --hard HEAD^ path/filename | abort your changes to a file
+<code>git branch</code> | see our current branches
+<code>git branch -a</code> | list all branches (remote and local)
+<code>git branch new_branch</code> | create a new branch
+<code>git branch -f new_branch</code> | create a new branch (if it already exists, then reset it)
+<code>git branch -d new_branch</code> | delete branch
+<code>git checkout new_branch</code> | switch branch
+<code>git checkout -b new_branch</code> | create a new branch and switch to it
+<code>git checkout -B new_branch</code> | create a new branch (if it already exists, then reset it) and switch to it
+<code>git checkout -b [branch name] origin/[branch name]</code> | clone a remote branch and switch to it
+<code>git checkout -f new_branch</code> | switching branches, proceed even if the index or the working tree differs from HEAD. This is used to throw away local changes.
+<code>git checkout -</code>  | switch to the branch last checked out
+<code>git checkout -- [file-name.txt]</code> | discard changes to a file
+<code>git checkout e3b43d63</code> | get back to a previously committed state
+<code>git reset --hard HEAD^ path/filename</code> | abort your changes to a file
 
 ```git
 -m, --merge
@@ -146,54 +147,60 @@ original contents).
 
 ## MERGING
 first switch back to the main branch by git checkout master_branch
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git merge new_branch | merge a branch into the active branch
-git merge [source branch] [target branch] | merge a branch into a target branch
+<code>git merge new_branch</code> | merge a branch into the active branch
+<code>git merge [source branch] [target branch]</code> | merge a branch into a target branch
 
 ## STASHING
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git stash | command temporarily stores all the modified tracked files.
-git stash save "message" | command temporarily stores all the modified tracked files with custom message.
-git stash list | lists all stashed changesets
-git stash pop | restores the most recently stashed files.
-git stash pop "stash@{1}" | restores the stashed files for the given stash id
-git stash drop | discards the most recently stashed changeset.
-git stash drop "stash@{1}" | discards the stashed files for the given stash id
-git stash apply | restore the most recently stashed files and delete stash from list
-git stash clear | remove all stashed entries
+<code>git stash</code> | command temporarily stores all the modified tracked files.
+<code>git stash save "message"</code> | command temporarily stores all the modified tracked files with custom message.
+<code>git stash list</code> | lists all stashed changesets
+<code>git stash pop</code> | restores the most recently stashed files.
+<code>git stash pop "stash@{1}"</code> | restores the stashed files for the given stash id
+<code>git stash drop</code> | discards the most recently stashed changeset.
+<code>git stash drop "stash@{1}"</code> | discards the stashed files for the given stash id
+<code>git stash apply</code> | restore the most recently stashed files and delete stash from list
+<code>git stash clear</code> | remove all stashed entries
 
 ## SHARING AND UPDATING
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git push origin [branch name] | Push a branch to your remote repository
-git push -u origin [branch name] | Push changes to remote repository (and remember the branch)
-git push | Push changes to remote repository (remembered branch)
-git push origin --delete [branch name] | Delete a remote branch
-git pull | Update local repository to the newest commit
-git pull origin [branch name] | Pull changes from remote repository
-git remote add origin ssh://git@github.com/[username]/[repository-name].git | Add a remote repository
-git remote set-url origin ssh://git@github.com/[username]/[repository-name].git | Set a repository's origin branch to SSH
+<code>git push origin [branch name]</code> | Push a branch to your remote repository
+<code>git push -u origin [branch name]</code> | Push changes to remote repository (and remember the branch)
+<code>git push</code> | Push changes to remote repository (remembered branch)
+<code>git push origin --delete [branch name]</code> | Delete a remote branch
+<code>git pull</code> | Update local repository to the newest commit
+<code>git pull origin [branch name]</code> | Pull changes from remote repository
+<code>git remote add origin ssh://git@github.com/[username]/[repository-name].git </code> | Add a remote repository
+<code>git remote set-url origin ssh://git@github.com/[username]/[repository-name].git </code> | Set a repository's origin branch to SSH
 
 ## DIFFRENCE IN FILES
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git diff | shows the file differences which are not yet staged
-git diff –staged | shows the differences between the files in the staging area and the latest version present
-git diff [branch1] [branch2] | shows the differences between the two branches mentioned
+<code>git diff</code> | shows the file differences which are not yet staged
+<code>git diff –staged</code> | shows the differences between the files in the staging area and the latest version present
+<code>git diff [branch1] [branch2]</code> | shows the differences between the two branches mentioned
 
 ## LOGGING
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git log | list the version history for the current branch
-git log –follow[file] | lists version history for a file, including the renaming of files also.
-git show [commit] | shows the metadata and content changes of the specified commit.
+<code>git log</code> | list the version history for the current branch
+<code>git log –follow[file]</code> | lists version history for a file, including the renaming of files also.
+<code>git show [commit]</code> | shows the metadata and content changes of the specified commit.
 
 ## MISC
+
 COMMAND | DESCRIPTION
 ------------ | -------------
-git --version | Prints the Git suite version that the git program came from.
-git --help | Prints the synopsis and a list of the most commonly used commands.
-git --help -a | Prints all git commands
-git --help -all | Prints all git commands
+<code>git --version</code> | Prints the Git suite version that the git program came from.
+<code>git --help</code> | Prints the synopsis and a list of the most commonly used commands.
+<code>git --help -a</code> | Prints all git commands
+<code>git --help -all</code> | Prints all git commands
