@@ -233,3 +233,5 @@ COMMAND | DESCRIPTION
 <code>git --help</code> | Prints the synopsis and a list of the most commonly used commands.
 <code>git --help -a</code> | Prints all git commands
 <code>git --help -all</code> | Prints all git commands
+<code>git check-ignore *</code> | List ignored files
+<code>git status --ignored</code | Status of ignored files
