@@ -9,28 +9,28 @@ A list of my commonly used Git commands.
 3. Start a project and give it a name
 4. Grab the HTTPS link to this new repository	
 ```git
-<code>https://github.com/YourUsername/some-small-app.git</code>
+https://github.com/YourUsername/some-small-app.git
 ```
 5. Bind this remote repository to your local repository 
 via HTTPS 
 ```git
-<code>git remote add origin https://github.com/YourUsername/some-small-app.git</code>
+git remote add origin https://github.com/YourUsername/some-small-app.git
 ```
 push tells Git to push your files to a remote repository
 ```git
-<code>git push -u origin master</code>
+git push -u origin master
 ```	
 "-u", we can run only "git push" next time!".
 
 "git push" is that you have to enter your credentials each time you push code to GitHub.
 6. Bind this remote repository to your local repository via SSH
 ```git
-<code>git remote add origin git@github.com:YourUsername/your-app.git</code>
+git remote add origin git@github.com:YourUsername/your-app.git
 ```
 work with SSH, then you won't have to enter GitHub credentials every time you push code to GitHub [help connecting to github with ssh](https://help.github.com/articles/connecting-to-github-with-ssh/)
 7. View the list of repositories
 ```git
-<code>git remote -v</code>
+git remote -v
 ```
 8. Ignore files with 
 ```git
