@@ -38,6 +38,31 @@ git remote -v
 .gitignore
 ```
 
+PATTERN | EXAMPLE | DESCRIPTION
+------------ | ------------- | -------------
+**/logs | logs/debug.log <br /> logs/monday/foo.bar <br /> build/logs/debug.log | You can prepend a pattern with a double asterisk to match directories anywhere in the repository.
+**/logs/debug.log	| logs/debug.log <br /> build/logs/debug.log <br /> but not <br /> logs/build/debug.log	| You can also use a double asterisk to match files based on their name and the name of their parent directory.
+*.log	| debug.log <br /> foo.log <br /> .log <br /> logs/debug.log | An asterisk is a wildcard that matches zero or more characters.
+*.log <br /> !important.log	| debug.log <br /> trace.log <br /> but not <br /> important.log <br /> logs/important.log	| Prepending an exclamation mark to a pattern negates it. If a file matches a pattern, but also matches a negating pattern defined later in the file, it will not be ignored.
+*.log <br /> !important/*.log	| trace.*	debug.log <br /> important/trace.log <br /> but not <br /> important/debug.log	| Patterns defined after a negating pattern will re-ignore any previously negated files.
+/debug.log | debug.log <br /> but not <br /> logs/debug.log	| Prepending a slash matches files only in the repository root.
+debug.log	 | debug.log <br /> logs/debug.log |	By default, patterns match files in any directory
+debug?.log	| debug0.log <br /> debugg.log <br /> but not <br /> debug10.log |	A question mark matches exactly one character.
+debug[0-9].log |	debug0.log <br /> debug1.log <br /> but not debug10.log |	Square brackets can also be used to match a single character from a specified range.
+debug[01].log |	debug0.log <br /> debug1.log <br /> but not <br /> debug2.log <br /> debug01.log |	Square brackets match a single character form the specified set.
+debug[!01].log	| debug2.log <br /> but not <br /> debug0.log <br /> debug1.log <br /> debug01.log |	An exclamation mark can be used to match any character except one from the specified set.
+debug[a-z].log |	debuga.log <br /> debugb.log <br /> but not <br /> debug1.log |	Ranges can be numeric or alphabetic.
+logs |	logs <br /> logs/debug.log <br /> logs/latest/foo.bar <br /> build/logs <br /> build/logs/debug.log |	If you don't append a slash, the pattern will match both files and the contents of directories with that name. In the example matches on the left, both directories and files named logs are ignored
+logs/ |	logs/debug.log <br /> logs/latest/foo.bar <br /> build/logs/foo.bar <br /> build/logs/latest/debug.log |	Appending a slash indicates the pattern is a directory. The entire contents of any directory in the repository matching that name – including all of its files and subdirectories – will be ignored
+logs/ <br /> !logs/important.log |	logs/debug.log <br /> logs/important.log |	Wait a minute! Shouldn't logs/important.log be negated in the example on the left <br /><br /> Nope! Due to a performance-related quirk in Git, you can not negate a file that is ignored due to a pattern matching a directory
+logs/**/debug.log |	logs/debug.log <br /> logs/monday/debug.log <br /> logs/monday/pm/debug.log |	A double asterisk matches zero or more directories.
+logs/*day/debug.log |	logs/monday/debug.log <br /> logs/tuesday/debug.log <br /> but not <br /> logs/latest/debug.log |	Wildcards can be used in directory names as well.
+logs/debug.log |	logs/debug.log <br /> but not <br /> debug.log <br /> build/logs/debug.log |	Patterns specifying a file in a particular directory are relative to the repository root. (You can prepend a slash if you like, but it doesn't do anything special.)
+
+
+
+
+
 
 ## CONFIG (Location of config file ~/.gitconfig)
 Configure the author name to be used with your commits.
@@ -53,12 +78,20 @@ git config –global user.email "[email address]"
 Initialize a local Git repository
 ```git
 git init [repository name]
+```
+Transform the current directory into a Git repository. This adds a .git subdirectory to the current directory and makes it possible to start recording revisions of the project.
+
+OR
+
+```git
 git clone [repository name] [directory path]
 ```
 Create a local copy of a remote repository (from an existing URL)
 ```git
 git clone ssh://git@github.com/[username]/[repository-name].git
 ```
+At a high level, they can both be used to "initialize a new git repository." However, git clone is dependent on git init. git clone is used to create a copy of an existing repository. Internally, git clone first calls git init to create a new repository. It then copies the data from the existing repository, and checks out a new set of working files.
+
 ```git
 git pull
 ```
@@ -71,10 +104,26 @@ COMMAND | DESCRIPTION
 <code>git config --system core.editor "[editor]"</code> | 
 <code>git config --global alias. [alias-name] [git-command]</code> |
 <code>git config --global color.ui auto</code> |
+<code>git config --global merge.tool [toolname like kdiff3] |
 
 <code>git config --global core.editor \
 "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code>
 
+git config levels and files
+Before we further discuss git config usage, let's take a moment to cover configuration levels. The git config command can accept arguments to specify which configuration level to operate on. The following configuration levels are available:
+
+--local
+By default, git config will write to a local level if no configuration option is passed. Local level configuration is applied to the context repository git config gets invoked in. Local configuration values are stored in a file that can be found in the repo's .git directory: .git/config
+ 
+
+ --global
+Global level configuration is user-specific, meaning it is applied to an operating system user. Global configuration values are stored in a file that is located in a user's home directory. ~ /.gitconfig on unix systems and C:\Users\\.gitconfig on windows
+ 
+
+ --system
+System-level configuration is applied across an entire machine. This covers all users on an operating system and all repos. The system level configuration file lives in a gitconfig file off the system root path. $(prefix)/etc/gitconfig on unix systems. On windows this file can be found at C:\Documents and Settings\All Users\Application Data\Git\config on Windows XP, and in C:\ProgramData\Git\config on Windows Vista and newer.
+
+Thus the order of priority for configuration levels is: local, global, system. This means when looking for a configuration value, Git will start at the local level and bubble up to the system level.
 
 ## GIT STARTING A REPO/ CLONING
 COMMAND | DESCRIPTION
@@ -265,6 +314,25 @@ COMMAND | DESCRIPTION
 
 ## DELETE ALL LOCAL BRANCHES
 <code>git branch | grep -v "[MASTER_BRANCH]" | xargs git branch -D</code>
+  
+
+## SQUASH YOUR COMMITS
+To "squash" in Git means to combine multiple commits into one.
+COMMAND | DESCRIPTION
+------------ | -------------
+<code>git rebase -i HEAD~[n]</code> | merge n commits into 1
+At this point your editor of choice will pop up, showing the list of commits you want to merge.
+Note that it might be confusing at first, since they are displayed in a reverse order, where the older commit is on top.
+You mark a commit as squashable by changing the word pick into squash next to it (or s for brevity, as stated in the comments).
+<code>pick d94e78 Prepare the workbench for feature Z     --- older commit</code>
+<code>s 4e9baa Cool implementation </code>
+<code>s afb581 Fix this and that  </code>
+<code>s 643d0e Code cleanup</code>
+<code>s 87871a I'm ready! </code>
+<code>s 0c3317 Whoops, not yet... </code>
+<code>s 871adf OK, feature Z is fully implemented      --- newer commit</code>
+Save the file and close the editor.
+  
 
 ## Setup GIT GUI 
 Install On Centos <code>sudo yum install git-gui</code>
