@@ -161,8 +161,8 @@ COMMAND | DESCRIPTION
 <code>git reset another-file.js</code> | unstages the file but it preserves the file contents.
 <code>git push origin :branchname</code> | Delete remote branch (push nothing)
 <code>git push origin --delete branchname</code> | Delete remote branch (push nothing)
-<code>git clean -n git clean -f</code | Forcefully remove untracked files
-<code>git clean -n git clean -f -d</code | Forcefully remove untracked directory
+<code>git clean -n git clean -f</code> | Forcefully remove untracked files
+<code>git clean -n git clean -f -d</code> | Forcefully remove untracked directory
 
 
 ## COMMITTING
