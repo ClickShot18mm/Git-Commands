@@ -39,7 +39,7 @@ git remote -v
 ```
 
 
-## CONFIG
+## CONFIG (Location of config file ~/.gitconfig)
 Configure the author name to be used with your commits.
 ```git
 git config –global user.name "[name]"
@@ -53,6 +53,7 @@ git config –global user.email "[email address]"
 Initialize a local Git repository
 ```git
 git init [repository name]
+git clone [repository name] [directory path]
 ```
 Create a local copy of a remote repository (from an existing URL)
 ```git
@@ -67,6 +68,13 @@ COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git config –global user.name "[name]"</code> | Configure the author name to be used with your commits.
 <code>git config –global user.email "[email address]"</code> | Configure the email address to be used with your commits.
+<code>git config --system core.editor "[editor]"</code> | 
+<code>git config --global alias. [alias-name] [git-command]</code> |
+<code>git config --global color.ui auto</code> |
+
+<code>git config --global core.editor \
+"'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code>
+
 
 ## GIT STARTING A REPO/ CLONING
 COMMAND | DESCRIPTION
@@ -87,6 +95,7 @@ COMMAND | DESCRIPTION
 <code>git add .</code> | Add several files to the staging area in one go (only add files located in the root directory)
 <code>git add --all</code> | Add several files to the staging area in one go (add files located in the root directory and other directories)
 <code>git add -A</code> | Add all new and changed files to the staging area (Same as Above)
+<code>git add -f .<code> | Add all new, changed and ignored files to the staging area
 <code>git add *</code> | Adds one or more to the staging area.
 <code>git add Folder/\*.txt</code> | Adds content from all *.txt files under given directory and its subdirectories
 <code>git rm --cached my-file.ts</code> | deletes the file from your working directory and stages the deletion
@@ -234,4 +243,23 @@ COMMAND | DESCRIPTION
 <code>git --help -a</code> | Prints all git commands
 <code>git --help -all</code> | Prints all git commands
 <code>git check-ignore *</code> | List ignored files
-<code>git status --ignored</code | Status of ignored files
+<code>git status --ignored</code> | Status of ignored files
+
+
+## GIT GOOD MORNING COMMANDS
+COMMAND | DESCRIPTION
+------------ | -------------
+<code>git checkout [master_branch]</code> |
+<code>git remote prune origin</code> | The git remote prune command only deletes the remote tracking branches in the remotes/origin namespace. Not the local branches.
+<code>git fetch origin</code> | Downloads all history from the remote tracking branches
+<code>git pull</code> | Updates your current local working branch with all new commits from the corresponding remote branch on GitHub
+<code>git checkout [child_branch]</code> |
+<code>git pull</code> |
+<code>git rebase [master_branch]</code> | To place feature branch of top of [Master Branch]
+<code>gitk --all</code> |
+<code>git rebase --abort</code> |
+<code>git rebase --continue</code> |
+</
+
+## DELETE ALL LOCAL BRANCHES
+<code>git branch | grep -v "[MASTER_BRANCH]" | xargs git branch -D</code>
