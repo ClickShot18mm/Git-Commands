@@ -180,13 +180,15 @@ COMMAND | DESCRIPTION
 COMMAND | DESCRIPTION
 ------------ | -------------
 <code>git stash</code> | command temporarily stores all the modified tracked files.
+<code>git stash -u</code> | command temporarily stores all the modified tracked and untracked files.
+<code>git stash -a</code> | command temporarily stores all the modified tracked, untracked and ignored files.
 <code>git stash save "message"</code> | command temporarily stores all the modified tracked files with custom message.
 <code>git stash list</code> | lists all stashed changesets
-<code>git stash pop</code> | restores the most recently stashed files.
-<code>git stash pop "stash@{1}"</code> | restores the stashed files for the given stash id
+<code>git stash pop</code> | restores the most recently stashed files and delete stash from list
+<code>git stash pop "stash@{1}"</code> | restores the stashed files for the given stash id and delete stash from list
 <code>git stash drop</code> | discards the most recently stashed changeset.
 <code>git stash drop "stash@{1}"</code> | discards the stashed files for the given stash id
-<code>git stash apply</code> | restore the most recently stashed files and delete stash from list
+<code>git stash apply</code> | restore the most recently stashed files
 <code>git stash clear</code> | remove all stashed entries
 
 ## SHARING AND UPDATING
@@ -233,6 +235,7 @@ COMMAND | DESCRIPTION
 <code>git log --graph</code> | Show history of commits as graph
 <code>git log --oneline --graph --all --decorate</code> | Show history of commits as graph-summary
 <code>git show [commit]</code> | shows the metadata and content changes of the specified commit.
+<code>git reflog</code>
 
 ## MISC
 
