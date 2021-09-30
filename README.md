@@ -59,9 +59,19 @@ logs/**/debug.log |	logs/debug.log <br /> logs/monday/debug.log <br /> logs/mond
 logs/*day/debug.log |	logs/monday/debug.log <br /> logs/tuesday/debug.log <br /> but not <br /> logs/latest/debug.log |	Wildcards can be used in directory names as well.
 logs/debug.log |	logs/debug.log <br /> but not <br /> debug.log <br /> build/logs/debug.log |	Patterns specifying a file in a particular directory are relative to the repository root. (You can prepend a slash if you like, but it doesn't do anything special.)
 
+In addition to these characters, you can use # to include comments in your .gitignore file:
+```git
+# ignore all logs
+*.log
+```
 
+You can use \ to escape .gitignore pattern characters if you have files or directories containing them:
+```git
+# ignore the file literally named foo[01].txt
+foo\[01\].txt
+```
 
-
+Git ignore rules are usually defined in a .gitignore file at the root of your repository. However, you can choose to define multiple .gitignore files in different directories in your repository. Each pattern in a particular .gitignore file is tested relative to the directory containing that file. However the convention, and simplest approach, is to define a single .gitignore file in the root. As your .gitignore file is checked in, it is versioned like any other file in your repository and shared with your teammates when you push. Typically you should only include patterns in .gitignore that will benefit other users of the repository.
 
 
 ## CONFIG (Location of config file ~/.gitconfig)
