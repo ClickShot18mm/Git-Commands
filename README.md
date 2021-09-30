@@ -266,3 +266,9 @@ COMMAND | DESCRIPTION
 
 ## DELETE ALL LOCAL BRANCHES
 <code>git branch | grep -v "[MASTER_BRANCH]" | xargs git branch -D</code>
+
+## Setup GIT GUI 
+Install On Centos <code>sudo yum install git-gui</code.
+Install On Ubuntu <code>sudo apt-get install git-gui</code>
+RUN <code>git gui</code>
+RUN <code>gitk --all</code>
