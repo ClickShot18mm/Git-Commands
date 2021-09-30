@@ -268,6 +268,9 @@ COMMAND | DESCRIPTION
 
 ## Setup GIT GUI 
 Install On Centos <code>sudo yum install git-gui</code>
+
 Install On Ubuntu <code>sudo apt-get install git-gui</code>
+  
 RUN <code>git gui</code>
+  
 RUN <code>gitk --all</code>
