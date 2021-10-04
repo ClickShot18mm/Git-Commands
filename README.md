@@ -293,7 +293,7 @@ COMMAND | DESCRIPTION
 <code>git log –follow[file]</code> | lists version history for a file, including the renaming of files also.
 <code>git log --graph</code> | Show history of commits as graph
 <code>git log --oneline --graph --all --decorate</code> | Show history of commits as graph-summary
-<code>git log --pretty=format:"%h%x09%an%x09%ad%x09%s"</code> | log result with date
+ <code>git log --pretty=format:"%h%x09%an%x09%ad%x09%s"</code> | log result with date </br> To shorten the date (not showing the time) use --date=short </br> In case you were curious what the different options were: </br> %h = abbreviated commit hash </br> %x09 = tab (character for code 9) </br> %an = author name </br> %ad = author date (format respects --date= option) </br> %s = subject
 <code>git show [commit]</code> | shows the metadata and content changes of the specified commit.
 <code>git reflog</code>
 
