@@ -293,6 +293,7 @@ COMMAND | DESCRIPTION
 <code>git log –follow[file]</code> | lists version history for a file, including the renaming of files also.
 <code>git log --graph</code> | Show history of commits as graph
 <code>git log --oneline --graph --all --decorate</code> | Show history of commits as graph-summary
+<code>git log --pretty=format:"%h%x09%an%x09%ad%x09%s"</code> | log result with date
 <code>git show [commit]</code> | shows the metadata and content changes of the specified commit.
 <code>git reflog</code>
 
