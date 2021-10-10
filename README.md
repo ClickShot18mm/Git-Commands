@@ -74,6 +74,25 @@ foo\[01\].txt
 Git ignore rules are usually defined in a .gitignore file at the root of your repository. However, you can choose to define multiple .gitignore files in different directories in your repository. Each pattern in a particular .gitignore file is tested relative to the directory containing that file. However the convention, and simplest approach, is to define a single .gitignore file in the root. As your .gitignore file is checked in, it is versioned like any other file in your repository and shared with your teammates when you push. Typically you should only include patterns in .gitignore that will benefit other users of the repository.
 
 
+## Configuring Git to store your password for you so that it will never ask everytime
+Update the URL of origin remote using SSH instead of HTTPS;
+```git
+git remote set-url origin git@github.com:username/repo.git
+```
+OR
+Make Git store the username and password and it will never ask for them.
+```git
+git config --global credential.helper store
+```
+Save the username and password for a session (cache it);
+```git
+git config --global credential.helper cache
+```
+You can also set a timeout for the above setting
+```git
+git config --global credential.helper 'cache --timeout=600'
+```
+
 ## CONFIG (Location of config file ~/.gitconfig)
 Configure the author name to be used with your commits.
 ```git
