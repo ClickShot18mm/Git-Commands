@@ -216,6 +216,8 @@ COMMAND | DESCRIPTION
 <code>git checkout -- [file-name.txt]</code> | discard changes to a file
 <code>git checkout e3b43d63</code> | get back to a previously committed state
 <code>git reset --hard HEAD^ path/filename</code> | abort your changes to a file
+<code>git restore filename</code> | discard uncommitted local changes in a file
+<code>git restore --staged filename</code> | unstage a certain file and thereby undo a previous git add
 
 ```git
 -m, --merge
