@@ -35,8 +35,7 @@ function findMinMax($arr){
        	  $min = $arr[$i];  
   }
   
-  print("Minimum element: " . $min);
-  print("Maximum element: " . $max);
+  print("Minimum element: " . $min . "\nMaximum element: " . $max);
 }
 
 findMinMax($arr);  
