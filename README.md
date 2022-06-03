@@ -367,7 +367,11 @@ Save the file and close the editor.
   
 ## GIT REVERT
 https://www.atlassian.com/git/tutorials/undoing-changes/git-revert
- 
+
+```git
+git reset --hard <commit_id>
+git push -f
+```
  
 ## Setup GIT GUI 
 Install On Centos <code>sudo yum install git-gui</code>
